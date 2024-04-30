@@ -1,15 +1,17 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from rest_framework.relations import HyperlinkedIdentityField
+
+from blog.models import Post
 
 
 # new
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-    user_detail_url = HyperlinkedIdentityField(
-        view_name='user-detail',
-        lookup_field='id'
-    )
-
     class Meta:
         model = User
-        fields = '__all__'
+        fields = ['url', 'username', 'email', 'is_staff', 'is_active', 'is_superuser']
+
+
+class PostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = ['id', 'title']

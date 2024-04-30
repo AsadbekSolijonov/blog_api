@@ -1,15 +1,13 @@
-from django.urls import path, include  # new
-from rest_framework import routers  # new
+from django.urls import path, include
+from rest_framework import routers
 
-from blog.views import UserViewSet, UserAPIView  # new
+from blog.views import UserViewSet, PostViewSet
 
-router = routers.DefaultRouter()  # new
-router.register(r'users', UserViewSet)  # new
+router = routers.DefaultRouter()
+router.register(r'users', UserViewSet)
+router.register(r'posts', PostViewSet)
 
 # new
 urlpatterns = [
     path('', include(router.urls)),
-    path('followers/', UserAPIView.as_view()),
-    path('followers/<int:pk>', UserAPIView.as_view(), name='user-detail')
-
 ]
