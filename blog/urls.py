@@ -1,18 +1,19 @@
 from django.urls import path, include
 from rest_framework import routers
-from django.urls import re_path
-from blog.views import UserViewSet, PostViewSet
+
+from drf_yasg import openapi
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
-from drf_yasg import openapi
+from blog.views import UserViewSet, PostViewSet
 
+# Routers
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'posts', PostViewSet)
 
-# API DOCS
+# API DOCS CONFIGURATION
 
-# ERRORS:
+# BUG FIX:
 # pip install --upgrade setuptools
 # pip install --upgrade distribute
 
