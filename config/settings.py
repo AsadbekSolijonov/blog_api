@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',  # new
     'rest_framework',  # new
-    'drf_yasg'
+    'drf_yasg',
+    "corsheaders"
 
 ]
 
@@ -49,7 +50,9 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        'rest_framework.permissions.IsAuthenticated',
+        # 'rest_framework.permissions.AllowAny',
     ]
 }
 
@@ -57,6 +60,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    "corsheaders.middleware.CorsMiddleware",  # new
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -64,6 +68,12 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'config.urls'
+
+# CORS_ALLOWED_ORIGINS = (
+#     "http://localhost:3000",
+#     "http://localhost:8000",
+# )
+# CSRF_TRUSTED_ORIGINS = ["localhost:8000"]
 
 TEMPLATES = [
     {
@@ -131,7 +141,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR / 'static')
-# STATICFILES_DIRS = [BASE_DIR / 'blog/static']
+STATICFILES_DIRS = [BASE_DIR / 'blog/static']
 
 MEDIA_URL = '/media/'  # new
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # new
