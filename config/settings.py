@@ -69,11 +69,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'config.urls'
 
-# CORS_ALLOWED_ORIGINS = (
-#     "http://localhost:3000",
-#     "http://localhost:8000",
-# )
-# CSRF_TRUSTED_ORIGINS = ["localhost:8000"]
+CORS_ALLOWED_ORIGINS = (
+    "http://localhost:3000",
+    "http://localhost:8000",
+)
+
 
 TEMPLATES = [
     {
@@ -99,13 +99,17 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': "back472_blog",
+        "USER": "back472_blog_user",
+        "PASSWORD": "G6BdUXUTjruB9deJPY6PGGBCxR4wmJNe",
+        "HOST": "dpg-cno0qkn109ks73ch112g-a",
+        "PORT": 5432
     }
 }
 
-url = 'postgres://back472_blog_user:G6BdUXUTjruB9deJPY6PGGBCxR4wmJNe@dpg-cno0qkn109ks73ch112g-a.oregon-postgres.render.com/back472_blog'
-database_url = os.environ.get('DATABASE_URL', url)
-DATABASES['default'] = dj_database_url.parse(database_url)
+# url = 'postgres://back472_blog_user:G6BdUXUTjruB9deJPY6PGGBCxR4wmJNe@dpg-cno0qkn109ks73ch112g-a.oregon-postgres.render.com/back472_blog'
+# database_url = os.environ.get('DATABASE_URL', url)
+# DATABASES['default'] = dj_database_url.parse(database_url)
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -141,7 +145,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR / 'static')
-STATICFILES_DIRS = [BASE_DIR / 'blog/static']
+STATICFILES_DIRS = [BASE_DIR]
 
 MEDIA_URL = '/media/'  # new
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # new
