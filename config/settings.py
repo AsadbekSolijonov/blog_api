@@ -75,7 +75,7 @@ CORS_ALLOWED_ORIGINS = (
     "http://localhost:5500",
 )
 
-CSRF_TRUSTED_ORIGINS = ["localhost:3000"]
+CSRF_TRUSTED_ORIGINS = ["localhost:3000", "localhost:5500"]
 
 TEMPLATES = [
     {
