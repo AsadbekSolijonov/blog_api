@@ -9,5 +9,4 @@ psycopg2-binary==2.9.9
 gunicorn==22.0.0
 drf-yasg==1.21.7
 django-cors-headers==3.10.1
-
-
+aiogram~=3.6.0
