@@ -16,4 +16,4 @@ def get_posts():
         my_json = json.loads(response.text)
         return my_json
     except Exception as e:
-        return "Nice Try!"
+        return [{"title": "Nice Try!", "content": "Ma'lumot qo'shing"}]
