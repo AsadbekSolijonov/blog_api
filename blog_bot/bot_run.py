@@ -25,14 +25,15 @@ async def command_start_handler(message: Message) -> None:
 async def posts_handler(message: Message) -> None:
     try:
         datas = get_posts()
-        # logging.info(datas)
-        # logging.info(type(datas))
         if datas:
             for data in datas:
                 text = (f"title: {data['title']}\n"
                         f"content: {data['content']}\n"
                         f"rasm: <a href='{data['image']}'>Rasm</a>\n")
-                await message.answer(text)
+                if data['image']:
+                    await message.answer_photo(photo=data['image'], caption=text)
+                else:
+                    await message.answer(text)
         else:
             await message.answer("Ma'lumot kiritung: ")
     except ConnectionError as e:
