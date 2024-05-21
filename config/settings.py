@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'blog',  # new
     'rest_framework',  # new
     'drf_yasg',
-    "corsheaders"
+    "corsheaders",
+    'rest_framework.authtoken'
 
 ]
 
@@ -53,6 +54,10 @@ REST_FRAMEWORK = {
         # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
         'rest_framework.permissions.IsAuthenticated',
         # 'rest_framework.permissions.AllowAny',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
     ]
 }
 
