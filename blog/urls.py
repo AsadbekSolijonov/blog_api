@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework import routers
-
+from blog.views import UserLoginAPIView, UserLogoutAPIView, UserRegisterAPIView
 from drf_yasg import openapi
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
@@ -36,4 +36,7 @@ urlpatterns = [
     path('swagger<format>/', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+    path("login/", UserLoginAPIView.as_view(), name="user_login"),
+    path("register/", UserRegisterAPIView().as_view(), name="user_register"),
+    path("logout/", UserLogoutAPIView.as_view(), name="user_logout")
 ]
