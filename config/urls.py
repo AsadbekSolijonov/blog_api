@@ -43,10 +43,10 @@ class CustomAuthToken(ObtainAuthToken):
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('api/v1/', include('blog.urls')),  # new
-    path('api-token-auth/', views.obtain_auth_token),  # new
-    path('api-token-auth/', CustomAuthToken.as_view())  # new
+    # path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('account', include('blog.urls')),  # new
+    # path('api-token-auth/', views.obtain_auth_token),  # new
+    # path('api-token-auth/', CustomAuthToken.as_view())  # new
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # new
