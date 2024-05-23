@@ -44,7 +44,7 @@ class CustomAuthToken(ObtainAuthToken):
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('account', include('blog.urls')),  # new
+    path('account/', include('blog.urls')),  # new
     # path('api-token-auth/', views.obtain_auth_token),  # new
     # path('api-token-auth/', CustomAuthToken.as_view())  # new
 ]
